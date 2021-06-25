@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>카운트</title>
+  <script>
+    function getToken() {
+      const token = String(Math.floor(Math.random() * 1000000)).padStart(6, '0')
+      document.getElementById('auth').innerText = token
+      let count = 10
+      setInterval(() => {
+        if (count > 0) {
+          count = count - 1
+          const minutes = String(Math.floor(count / 60)).padStart(2, '0')
+          const seconds = String(Math.floor(count % 60)).padStart(2, '0')
+          document.getElementById('ttt').innerText = minutes + ':' + seconds;
+
+          if (count === 0) {
+            document.getElementById('eee').setAttribute('disabled', 'true')
+          }
+        }
+      }, 1000)
+
+      
+    }
+    
+
+  </script>
+</head>
+<body>
+  <span id="auth">000000</span>
+  <button onclick="getToken()">인증번호 전송</button>
+
+  <div>
+    <span id="ttt">00:00</span>
+    <button id="eee">인증완료</button>
+  </div>
+</body>
+</html>
